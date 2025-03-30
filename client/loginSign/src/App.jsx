@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import SignUp from './signUp'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Login'
+import SignUp from './Signup'
 
 function App() {
   return (

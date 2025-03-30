@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
 const SignUp = () => {
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('/api/signup', {
+                name,
+                email,
+                password
+            })
+        } catch (error) {
+            console.log("error in signup", error)
+        }
+    }
+
     const navigate = useNavigate();
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
@@ -13,6 +32,7 @@ const SignUp = () => {
               type="text"
               id="name"
               placeholder="Enter your name"
+              onChange={(e) => setName(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -22,6 +42,7 @@ const SignUp = () => {
               type="email"
               id="email"
               placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -31,6 +52,7 @@ const SignUp = () => {
               type="password"
               id="password"
               placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>

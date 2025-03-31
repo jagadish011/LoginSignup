@@ -1,4 +1,4 @@
-import User from "../schema/User";
+import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 
 // User Sign Up
